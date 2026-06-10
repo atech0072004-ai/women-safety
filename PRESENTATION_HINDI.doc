@@ -1,0 +1,153 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<title>SafeHer - Pitch Deck Presentation (Hindi)</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+@page {
+    size: 11in 8.5in; /* Landscape orientation */
+    margin: 1in;
+}
+body { font-family: 'Segoe UI', 'Calibri', 'Arial', sans-serif; color: #333333; background-color: #FFFFFF; }
+.slide { 
+    page-break-after: always; 
+    border: 3px solid #1E3A8A; 
+    padding: 30px; 
+    margin-bottom: 40px; 
+    background-color: #FFFFFF;
+    height: 6in;
+}
+.title-slide {
+    background-color: #1E3A8A;
+    color: #FFFFFF;
+    border: none;
+    text-align: center;
+    padding-top: 100px;
+}
+.title-slide h1 { color: #FFFFFF; font-size: 36pt; margin-bottom: 15px; font-weight: bold; border-bottom: none; }
+.title-slide h2 { color: #93C5FD; font-size: 18pt; font-weight: normal; margin-top: 0; }
+.title-slide p { color: #E0F2FE; font-size: 14pt; margin-top: 50px; }
+.title-slide .presenter { color: #F0F9FF; font-size: 16pt; margin-top: 20px; font-weight: bold; }
+
+h1 { color: #1E3A8A; font-size: 24pt; border-bottom: 2px solid #3B82F6; padding-bottom: 10px; margin-top: 0; margin-bottom: 25px; }
+h2 { color: #2563EB; font-size: 16pt; margin-top: 0; }
+h3 { color: #2563EB; font-size: 14pt; margin-top: 15px; margin-bottom: 5px; }
+ul { margin-left: 25px; margin-top: 15px; }
+li { font-size: 13pt; margin-bottom: 10px; line-height: 1.5; }
+p { font-size: 13pt; line-height: 1.6; }
+
+.grid { display: table; width: 100%; margin-top: 20px; }
+.col { display: table-cell; width: 50%; vertical-align: top; padding-right: 15px; }
+.highlight-box { background-color: #F0F9FF; border-left: 5px solid #0EA5E9; padding: 15px; font-size: 12pt; margin-top: 20px; }
+.footer { font-size: 9pt; color: #9CA3AF; margin-top: 40px; text-align: right; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: TITLE SLIDE (HINDI) -->
+<div class="slide title-slide">
+    <h1>SafeHer (सेफहर)</h1>
+    <h2>अगली पीढ़ी का महिला सुरक्षा और आपातकालीन एसओएस प्लेटफॉर्म</h2>
+    <p class="presenter">प्रस्तुतकर्ता: अरुण कुमार</p>
+    <p>एक अत्यंत लचीला और सुरक्षित फुल-स्टैक वेब एप्लीकेशन</p>
+    <div class="footer">स्लाइड 1</div>
+</div>
+
+<!-- SLIDE 2: THE PROBLEM (HINDI) -->
+<div class="slide">
+    <h1>मुख्य समस्याएँ: आधुनिक महिला सुरक्षा की चुनौतियाँ</h1>
+    <p>बाज़ार में सुरक्षा ऐप्स होने के बावजूद, वर्तमान टूल्स को इन कठिन बाधाओं का सामना करना पड़ता है:</p>
+    <ul>
+        <li><strong>नेटवर्क और ऑफलाइन विफलता</strong>: अधिकांश ऐप्स सर्वर डाउन होने या इंटरनेट कनेक्शन टूटने पर पूरी तरह से काम करना बंद कर देते हैं।</li>
+        <li><strong>डाउनलोड में देरी</strong>: आपातकालीन संकट के समय ऐप स्टोर से भारी ऐप डाउनलोड करने में बहुत अधिक समय बर्बाद होता है।</li>
+        <li><strong>साक्ष्य रिकॉर्डिंग का अभाव</strong>: सामान्य अलार्म बटन अलर्ट तो भेज देते हैं, लेकिन उत्पीड़न के सुरक्षित साक्ष्य (जैसे फोटो/वीडियो) सुरक्षित रूप से सेव नहीं करते।</li>
+        <li><strong>भाषा की सीमाएँ</strong>: आपातकालीन सेवाएं और निर्देश अक्सर केवल अंग्रेजी में होते हैं, जो कई उपयोगकर्ताओं के लिए अनुपयोगी हैं।</li>
+    </ul>
+    <div class="footer">स्लाइड 2</div>
+</div>
+
+<!-- SLIDE 3: OUR SOLUTION (HINDI) -->
+<div class="slide">
+    <h1>हमारा समाधान: SafeHer (सेफहर)</h1>
+    <p>संकट की स्थिति में तुरंत सहायता प्रदान करने के लिए एक अत्यधिक अनुकूल और सुरक्षित वेब-आधारित प्लेटफॉर्म:</p>
+    <div class="grid">
+        <div class="col">
+            <h3>त्वरित आपातकालीन कार्रवाई</h3>
+            <ul>
+                <li>उच्च-डेसिबल वाला स्थानीय सायरन अलार्म।</li>
+                <li>जीपीएस लोकेशन को एक क्लिक में ट्रैक करना।</li>
+                <li>अभिभावकों (Guardians) को पूर्वनिर्धारित एसएमएस भेजना।</li>
+            </ul>
+        </div>
+        <div class="col">
+            <h3>सामुदायिक रिपोर्टिंग और सुरक्षा</h3>
+            <ul>
+                <li>उत्पीड़न हॉटस्पॉट की सुरक्षित और गुमनाम रिपोर्टिंग।</li>
+                <li>साक्ष्य छवियों का तत्काल क्लाउड बैकअप।</li>
+                <li>दैनिक सुरक्षा टिप्स और चेकलिस्ट गाइड।</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">स्लाइड 3</div>
+</div>
+
+<!-- SLIDE 4: DUAL RESILIENCY (HINDI) -->
+<div class="slide">
+    <h1>मुख्य लाभ: हाइब्रिड ऑफलाइन-फर्स्ट लचीलापन</h1>
+    <p>SafeHer को इस तरह डिज़ाइन किया गया है कि यह डेटाबेस आउटेज या ऑफलाइन होने पर भी <strong>कभी क्रैश नहीं होता</strong>:</p>
+    <ul>
+        <li><strong>सुपाबेस ऑनलाइन मोड</strong>: यह आपातकालीन संपर्कों, एसओएस लॉग और साक्ष्य तस्वीरों को रीयल-टाइम में क्लाउड डेटाबेस में सुरक्षित रखता है।</li>
+        <li><strong>ऑफलाइन फॉलबैक मोड</strong>: यदि सर्वर क्रेडेंशियल या इंटरनेट बंद हो जाता है, तो ऐप तुरंत ब्राउज़र के लोकल स्टोरेज (LocalStorage) में काम करने लगता है।</li>
+        <li><strong>परिणाम</strong>: संकट के समय उपयोगकर्ता को कभी भी क्रैश स्क्रीन या लोडिंग विफलता नहीं देखनी पड़ती।</li>
+    </ul>
+    <div class="footer">स्लाइड 4</div>
+</div>
+
+<!-- SLIDE 5: ZERO-DOWNLOAD AUDIO ALARM (HINDI) -->
+<div class="slide">
+    <h1>मुख्य लाभ: तत्काल ब्राउज़र-संश्लेषित सायरन</h1>
+    <p>अन्य ऐप्स ऑडियो फ़ाइलों (.mp3) को डाउनलोड करने पर निर्भर होते हैं जो खराब नेटवर्क में काम नहीं करते। SafeHer इसका आधुनिक समाधान प्रदान करता है:</p>
+    <ul>
+        <li><strong>वेब ऑडियो एपीआई सिंथेसिस</strong>: सायरन ध्वनि को सीधे ब्राउज़र के अंदर ऑडियो नोड्स का उपयोग करके उत्पन्न किया जाता है।</li>
+        <li><strong>0kb डेटा डाउनलोड</strong>: ऑडियो लोड करने के लिए किसी बाहरी फाइल की आवश्यकता नहीं है, जिससे यह तत्काल बजता है।</li>
+        <li><strong>सेंसिटिव रिपल एनीमेशन</strong>: सायरन बटन संकट के समय स्पष्ट रूप से दिखने के लिए रिपल एनीमेशन का उपयोग करता है।</li>
+    </ul>
+    <div class="highlight-box">
+        <strong>तकनीकी क्षमता:</strong> सायरन प्लेबैक बटन पर क्लिक करने के 10 मिलीसेकंड के भीतर शुरू होता है, जो पूरी तरह से इंटरनेट की गति से स्वतंत्र है।
+    </div>
+    <div class="footer">स्लाइड 5</div>
+</div>
+
+<!-- SLIDE 6: DATA PRIVACY & SECURE STORAGE (HINDI) -->
+<div class="slide">
+    <h1>मुख्य लाभ: सुरक्षित साक्ष्य तिजोरी (Evidence Vault)</h1>
+    <p>उत्पीड़न से जुड़े साक्ष्यों को सुरक्षित तरीके से क्लाउड में स्टोर किया जाता है:</p>
+    <ul>
+        <li><strong>सीधा स्टोरेज अपलोड</strong>: उत्पीड़न की तस्वीरें या गाड़ी के नंबर की फोटो सीधे सुपाबेस स्टोरेज बकेट में सुरक्षित रूप से सेव होती हैं।</li>
+        <li><strong>रो-लेवल सुरक्षा (RLS)</strong>: उन्नत डेटाबेस सुरक्षा नीतियां हैकर्स या किसी अन्य उपयोगकर्ता को आपके संवेदनशील डेटा को देखने से रोकती हैं।</li>
+        <li><strong>गुमनाम रिपोर्ट विकल्प</strong>: अपनी पहचान उजागर किए बिना उत्पीड़न हॉटस्पॉट की रिपोर्ट दर्ज करने की सुविधा।</li>
+    </ul>
+    <div class="footer">स्लाइड 6</div>
+</div>
+
+<!-- SLIDE 7: LOCALIZATION & ACCESSIBILITY (HINDI) -->
+<div class="slide">
+    <h1>मुख्य लाभ: पूर्ण पहुंच और भाषा विकल्प</h1>
+    <p>SafeHer सभी के लिए समान रूप से सुलभ और उपयोगी है:</p>
+    <ul>
+        <li><strong>दोहरी भाषा (हिंदी और अंग्रेजी)</strong>: एक क्लिक में पूरे इंटरफ़ेस, फॉर्म और मैप्स को हिंदी में स्विच किया जा सकता है।</li>
+        <li><strong>रात की यात्रा के लिए डार्क मोड</strong>: यात्रा के दौरान आँखों पर चमक को कम करता है और गोपनीयता सुनिश्चित करता है।</li>
+        <li><strong>मोबाइल फ्रेंडली रैपर</strong>: इसे आसानी से लाइटवेट एंड्रॉइड या आईओएस एप्लीकेशन में बदला जा सकता है।</li>
+    </ul>
+    <div class="footer">स्लाइड 7</div>
+</div>
+
+</body>
+</html>
