@@ -1,0 +1,268 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<title>SafeHer - Application Blueprint</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+body { font-family: 'Calibri', 'Arial', sans-serif; line-height: 1.6; color: #333333; margin: 30px; }
+h1 { color: #1E3A8A; border-bottom: 2px solid #1E3A8A; padding-bottom: 5px; font-size: 24pt; margin-bottom: 20px; }
+h2 { color: #2563EB; margin-top: 30px; border-bottom: 1px solid #E5E7EB; padding-bottom: 3px; font-size: 16pt; }
+h3 { color: #1D4ED8; font-size: 12pt; margin-top: 15px; margin-bottom: 5px; }
+p, li { font-size: 11pt; margin-bottom: 8px; }
+code { font-family: 'Consolas', 'Courier New', monospace; background-color: #F3F4F6; padding: 2px 4px; font-size: 9.5pt; }
+pre { font-family: 'Consolas', 'Courier New', monospace; background-color: #F3F4F6; border-left: 4px solid #3B82F6; padding: 10px; font-size: 9pt; margin: 15px 0; }
+table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+th { background-color: #F3F4F6; border: 1px solid #D1D5DB; padding: 8px; text-align: left; font-weight: bold; font-size: 10pt; }
+td { border: 1px solid #D1D5DB; padding: 8px; font-size: 10pt; }
+ul, ol { margin-left: 20px; margin-bottom: 15px; }
+.info-box { background-color: #EFF6FF; border-left: 4px solid #2563EB; padding: 12px; margin: 15px 0; }
+.diagram { font-family: 'Consolas', 'Courier New', monospace; font-size: 9pt; line-height: 1.2; background-color: #F9FAFB; border: 1px solid #E5E7EB; padding: 15px; margin: 15px 0; }
+</style>
+</head>
+<body>
+
+<h1>SafeHer - Full-Stack Women Safety Application Blueprint</h1>
+<p>This document outlines the architectural blueprint, repository file structure, and core operational flows of the <strong>SafeHer</strong> full-stack women safety web application.</p>
+
+<hr/>
+
+<h2>🏛️ System Architecture Overview</h2>
+<p>SafeHer is built as a highly responsive, secure, and resilient hybrid full-stack application:</p>
+<ul>
+    <li><strong>Client Tier</strong>: React (Vite) + Vanilla CSS/Tailwind CSS. Built with responsive viewport layouts for mobile-first usage. It interacts with Supabase Auth/Storage directly (for security and speed) and delegates API actions (contacts, SOS log management) to the custom backend server.</li>
+    <li><strong>Backend Server Tier</strong>: Node.js + Express. Exposes REST API endpoints and connects to Supabase via the Admin SDK (<code>service_role</code> key) to handle server-side validation and database operations.</li>
+    <li><strong>Backend-as-a-Service Tier</strong>: Supabase (PostgreSQL database, Storage Buckets, and User Management Auth).</li>
+</ul>
+
+<div class="diagram">
+<pre>
+  ┌──────────────────────────────────────────┐
+  │       React Frontend Client              │
+  │       (Vite - localhost:5173)            │
+  └─────┬──────────────────────────────┬─────┘
+        │                              │
+        │ Direct Client Auth           │ REST API Requests
+        │ & Image Uploads              │ (Contacts, SOS Logs)
+        ▼                              ▼
+  ┌──────────────────────┐       ┌──────────────────────────┐
+  │  Supabase Services   │       │   Node/Express Backend   │
+  │   (Auth & Storage)   │       │ (Server - localhost:5000)│
+  └──────────────────────┘       └─────────────┬────────────┘
+                                               │
+                                               │ Admin DB Operations
+                                               │ (service_role key)
+                                               ▼
+                                 ┌──────────────────────────┐
+                                 │    Supabase Postgres     │
+                                 │         Database         │
+                                 └──────────────────────────┘
+</pre>
+</div>
+
+<hr/>
+
+<h2>📂 File &amp; Directory Structure</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Path / Directory</th>
+            <th>Type</th>
+            <th>Description / Purpose</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>backend/</strong></td>
+            <td>Folder</td>
+            <td>Node.js Express API Server directory.</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;├── .env</td>
+            <td>File</td>
+            <td>Private environment variables (port and database connection details).</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;├── server.js</td>
+            <td>File</td>
+            <td>Main API routes, in-memory fallbacks, and server initialization.</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;└── setup.sql</td>
+            <td>File</td>
+            <td>Database table definitions and Row-Level Security (RLS) policies.</td>
+        </tr>
+        <tr>
+            <td><strong>frontend/</strong></td>
+            <td>Folder</td>
+            <td>Vite + React Client Application.</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;├── .env</td>
+            <td>File</td>
+            <td>Client-side Supabase URL, Anon Key, and Google Maps config.</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;└── src/</td>
+            <td>Folder</td>
+            <td>Application source files.</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── components/</td>
+            <td>Folder</td>
+            <td>Reusable UI pieces (SOS buttons, custom safety radar maps, etc.).</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── context/</td>
+            <td>Folder</td>
+            <td>Global states (Authentication session, language, theme).</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── pages/</td>
+            <td>Folder</td>
+            <td>Page routes (Emergency dashboard, incident files, safety tips).</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr/>
+
+<h2>🔄 Core Application Flows</h2>
+
+<h3>1. User Authentication Flow</h3>
+<p>Illustrates the login/registration sequence. If Supabase is unavailable or keys are missing, the system transparently falls back to LocalStorage Mock Auth, ensuring the app remains browsable offline.</p>
+
+<div class="diagram">
+<pre>
+User                      React Frontend (AuthContext)      Supabase / LocalStorage
+ │                                     │                               │
+ ├─1. Submit Sign-In Form ────────────►│                               │
+ │                                     ├─2. Is Supabase configured?───►│
+ │                                     │                               │
+ │                                     ├───► Yes: Authenticate URL ───►│
+ │                                     │     & retrieve Session        │
+ │                                     │                               │
+ │                                     └───► No: Fallback to Local ───►│
+ │                                           Storage Mock Database     │
+ ◄─3. Active User Session Loaded ──────┤                               │
+</pre>
+</div>
+
+<h3>2. Emergency SOS Alert Flow</h3>
+<p>When the user triggers the SOS button, the system plays a synthesized alarm and broadcasts location coordinate payloads to the server database.</p>
+
+<div class="diagram">
+<pre>
+ [User triggers SOS Button]
+            │
+            ├─► Play synthesized alarm siren in browser (Web Audio API)
+            │
+            ├─► Capture GPS Coordinates (HTML5 Geolocation API)
+            │         │
+            │         ├─► Success: Attach GPS coordinates (lat, lon)
+            │         └─► Denied/Fail: Attach "Location Unavailable"
+            │
+            ▼
+    { Check Connection }
+            │
+            ├─► Connected: POST SOS payload to Supabase 'sos_alerts' table
+            └─► Offline: Push alert payload to InMemory fallback list
+            │
+            ▼
+   [Broadcast Alert to Trusted contacts circle]
+</pre>
+</div>
+
+<h3>3. Incident Reporting Flow</h3>
+<p>Filing an incident report manages both unstructured text data and evidence media. Media files are uploaded to object storage, and the resulting public URL is stored in the database.</p>
+
+<div class="diagram">
+<pre>
+   [User files Incident Report]
+                │
+         { Selected image? }
+          /           \
+       Yes             No
+        │               │
+  { Storage active? }   │
+    /       \           │
+  Yes        No         │
+   │          │         │
+ Upload to  Convert to  │
+  Storage   Base64 text │
+   │          │         │
+   └─────┬────┘         │
+         ▼              │
+    [Build Payload]◄────┘
+         │
+    { DB Active? }
+      /        \
+   Yes          No
+    │            │
+ Write to     Write to
+Supabase Table Mock Array
+</pre>
+</div>
+
+<hr/>
+
+<h2>🔒 Row-Level Security (RLS) Policy Blueprint</h2>
+<p>To protect users' sensitive safety data, the database uses PostgreSQL RLS. Below is a blueprint of how access is regulated:</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Table</th>
+            <th>Policy Name</th>
+            <th>Operation</th>
+            <th>Logic / Permission</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>trusted_contacts</strong></td>
+            <td>Users can manage their own contacts</td>
+            <td>ALL</td>
+            <td>USING (true)</td>
+            <td>Allows users to query and alter contacts.</td>
+        </tr>
+        <tr>
+            <td><strong>sos_alerts</strong></td>
+            <td>Anyone can file an SOS alert</td>
+            <td>INSERT</td>
+            <td>WITH CHECK (true)</td>
+            <td>Permits quick reporting during emergencies.</td>
+        </tr>
+        <tr>
+            <td><strong>sos_alerts</strong></td>
+            <td>Anyone can read SOS alerts</td>
+            <td>SELECT</td>
+            <td>USING (true)</td>
+            <td>Enables safety dashboards to list current reports.</td>
+        </tr>
+        <tr>
+            <td><strong>incident_reports</strong></td>
+            <td>Anyone can file incident reports</td>
+            <td>INSERT</td>
+            <td>WITH CHECK (true)</td>
+            <td>Allows rapid incident filing.</td>
+        </tr>
+        <tr>
+            <td><strong>incident_reports</strong></td>
+            <td>Anyone can read incident reports</td>
+            <td>SELECT</td>
+            <td>USING (true)</td>
+            <td>Allows public mapping of unsafe zones.</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

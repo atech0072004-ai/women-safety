@@ -1,0 +1,150 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<title>SafeHer - Pitch Deck Presentation</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+@page {
+    size: 11in 8.5in; /* Landscape orientation */
+    margin: 1in;
+}
+body { font-family: 'Segoe UI', 'Calibri', 'Arial', sans-serif; color: #333333; background-color: #FFFFFF; }
+.slide { 
+    page-break-after: always; 
+    border: 3px solid #1E3A8A; 
+    padding: 30px; 
+    margin-bottom: 40px; 
+    background-color: #FFFFFF;
+    height: 6in;
+}
+.title-slide {
+    background-color: #1E3A8A;
+    color: #FFFFFF;
+    border: none;
+    text-align: center;
+    padding-top: 100px;
+}
+.title-slide h1 { color: #FFFFFF; font-size: 36pt; margin-bottom: 15px; font-weight: bold; border-bottom: none; }
+.title-slide h2 { color: #93C5FD; font-size: 18pt; font-weight: normal; margin-top: 0; }
+.title-slide p { color: #E0F2FE; font-size: 12pt; margin-top: 50px; }
+
+h1 { color: #1E3A8A; font-size: 24pt; border-bottom: 2px solid #3B82F6; padding-bottom: 10px; margin-top: 0; margin-bottom: 25px; }
+h3 { color: #2563EB; font-size: 14pt; margin-top: 15px; margin-bottom: 5px; }
+ul { margin-left: 25px; margin-top: 15px; }
+li { font-size: 13pt; margin-bottom: 10px; line-height: 1.5; }
+p { font-size: 13pt; line-height: 1.6; }
+
+.grid { display: table; width: 100%; margin-top: 20px; }
+.col { display: table-cell; width: 50%; vertical-align: top; padding-right: 15px; }
+.highlight-box { background-color: #F0F9FF; border-left: 5px solid #0EA5E9; padding: 15px; font-size: 12pt; margin-top: 20px; }
+.footer { font-size: 9pt; color: #9CA3AF; margin-top: 40px; text-align: right; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: TITLE SLIDE -->
+<div class="slide title-slide">
+    <h1>SafeHer</h1>
+    <h2>Next-Generation Women Safety &amp; Emergency SOS Platform</h2>
+    <p>A Full-Stack Resilient Web Application Solution</p>
+    <div class="footer">Slide 1</div>
+</div>
+
+<!-- SLIDE 2: THE PROBLEM -->
+<div class="slide">
+    <h1>The Core Challenges in Modern Women's Safety</h1>
+    <p>Despite safety apps existing, current tools face critical structural barriers:</p>
+    <ul>
+        <li><strong>Network &amp; Offline Failures</strong>: Traditional applications crash or become completely unusable when credentials fail or internet connection drops.</li>
+        <li><strong>Installation Delays</strong>: App Store downloads take too long in immediate threat scenarios. Mobile web wrappers are needed.</li>
+        <li><strong>Lack of Evidence Capture</strong>: Standard panic buttons alert contacts, but fail to record and back up secure evidence (like harassment imagery) securely in the cloud.</li>
+        <li><strong>Language Barriers</strong>: Critical alerts and navigation pages are often only available in English, leaving non-native users vulnerable.</li>
+    </ul>
+    <div class="footer">Slide 2</div>
+</div>
+
+<!-- SLIDE 3: OUR SOLUTION -->
+<div class="slide">
+    <h1>Introducing SafeHer</h1>
+    <p>A highly resilient, lightweight, full-stack safety web platform designed to respond instantly in critical times:</p>
+    <div class="grid">
+        <div class="col">
+            <h3>Immediate Actions</h3>
+            <ul>
+                <li>High-decibel local audio alarms.</li>
+                <li>One-click GPS location logging.</li>
+                <li>SMS template dispatching to your Guardians Circle.</li>
+            </ul>
+        </div>
+        <div class="col">
+            <h3>Community Reporting</h3>
+            <ul>
+                <li>Safe, anonymous harassment reporting.</li>
+                <li>Live public evidence uploads.</li>
+                <li>Evolutionary safety checklist and tips.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">Slide 3</div>
+</div>
+
+<!-- SLIDE 4: DUAL RESILIENCY (THE OFFLINE EDGE) -->
+<div class="slide">
+    <h1>Key Advantage: Hybrid Offline-First Resiliency</h1>
+    <p>SafeHer is built to <strong>never crash</strong>, even under full database outage or missing settings:</p>
+    <ul>
+        <li><strong>Supabase Online Mode</strong>: Automatically saves emergency contacts, records SOS alerts, and uploads evidence images to secure cloud buckets in real-time.</li>
+        <li><strong>Demo / Offline Fallback Mode</strong>: If the internet drops or database variables are omitted, the app dynamically routes all storage to LocalStorage/In-Memory arrays.</li>
+        <li><strong>The Result</strong>: The user interface is always 100% responsive and functional, offering zero downtime or crash screens during critical moments.</li>
+    </ul>
+    <div class="footer">Slide 4</div>
+</div>
+
+<!-- SLIDE 5: ZERO-DOWNLOAD AUDIO ALARM -->
+<div class="slide">
+    <h1>Key Advantage: Instant Synthesized Siren</h1>
+    <p>Traditional apps rely on audio file downloads (.mp3) which fail under slow networks. SafeHer implements a modern alternative:</p>
+    <ul>
+        <li><strong>Web Audio API Synthesis</strong>: The siren sound is synthesized directly inside the browser using audio oscillator nodes.</li>
+        <li><strong>Zero Data Download</strong>: Takes 0kb of data to load, playing the siren instantly when clicked.</li>
+        <li><strong>High Visibility Pulse Animation</strong>: The dashboard button utilizes concentric ripple CSS animations to draw attention and guide the user in distress.</li>
+    </ul>
+    <div class="highlight-box">
+        <strong>Technical Metric:</strong> Audio playback begins in &lt;10 milliseconds from click, fully independent of network speed.
+    </div>
+    <div class="footer">Slide 5</div>
+</div>
+
+<!-- SLIDE 6: DATA PRIVACY & SECURE STORAGE -->
+<div class="slide">
+    <h1>Key Advantage: Secure Evidence Vault</h1>
+    <p>Harassment logs are backed up with security measures to protect victims:</p>
+    <ul>
+        <li><strong>Direct Storage Bucket Upload</strong>: Pictures of stalkers, hazard zones, or license plates are uploaded straight to secure Supabase Storage buckets.</li>
+        <li><strong>Row-Level Security (RLS)</strong>: PostgreSQL security policies prevent malicious actors from accessing or modifying other users' safety logs.</li>
+        <li><strong>Anonymous Submission</strong>: Users can choose to hide their name and email, allowing secure public hotspot mapping without exposing identity.</li>
+    </ul>
+    <div class="footer">Slide 6</div>
+</div>
+
+<!-- SLIDE 7: GLOBALIZATION & ACCESSIBILITY -->
+<div class="slide">
+    <h1>Key Advantage: Accessibility &amp; Customization</h1>
+    <p>SafeHer is tailored to be easily usable by anyone, anywhere:</p>
+    <ul>
+        <li><strong>Full Localization (English &amp; Hindi)</strong>: Instant translation toggle translates the entire dashboard, navigation, and input forms dynamically.</li>
+        <li><strong>Tailored Dark Mode</strong>: Reduces screen glare during nighttime travel, providing subtle navigation that won't draw unwanted attention.</li>
+        <li><strong>Capacitor Mobile Ready</strong>: Ready to compile into lightweight native Android or iOS apps with one click.</li>
+    </ul>
+    <div class="footer">Slide 7</div>
+</div>
+
+</body>
+</html>

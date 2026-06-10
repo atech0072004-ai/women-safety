@@ -1,0 +1,6 @@
+{
+  "appId": "com.safeher.app",
+  "appName": "SafeHer",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
