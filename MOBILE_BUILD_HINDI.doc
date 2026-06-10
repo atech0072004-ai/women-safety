@@ -1,0 +1,93 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<title>SafeHer - Mobile App Build Guide (Hindi)</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+body { font-family: 'Segoe UI', 'Calibri', 'Arial', sans-serif; line-height: 1.6; color: #333333; margin: 30px; }
+h1 { color: #1E3A8A; border-bottom: 2px solid #1E3A8A; padding-bottom: 5px; font-size: 24pt; margin-bottom: 20px; }
+h2 { color: #2563EB; margin-top: 30px; border-bottom: 1px solid #E5E7EB; padding-bottom: 3px; font-size: 16pt; }
+h3 { color: #1D4ED8; font-size: 12pt; margin-top: 15px; margin-bottom: 5px; }
+p, li { font-size: 11pt; margin-bottom: 8px; }
+code { font-family: 'Consolas', 'Courier New', monospace; background-color: #F3F4F6; padding: 2px 4px; font-size: 9.5pt; }
+pre { font-family: 'Consolas', 'Courier New', monospace; background-color: #F3F4F6; border-left: 4px solid #3B82F6; padding: 10px; font-size: 9pt; margin: 15px 0; }
+ul, ol { margin-left: 20px; margin-bottom: 15px; }
+.info-box { background-color: #EFF6FF; border-left: 4px solid #2563EB; padding: 12px; margin: 15px 0; }
+</style>
+</head>
+<body>
+
+<h1>SafeHer - मोबाइल ऐप बनाने की मार्गदर्शिका (एंड्रॉइड APK)</h1>
+<p>SafeHer फ़्रंटएंड में <strong>Capacitor</strong> पहले से ही एकीकृत (integrated) है, जो रिएक्ट वेब ऐप को एक नेटिव एंड्रॉइड शेल (Android shell) में बदल देता है। अपने एंड्रॉइड मोबाइल ऐप (<code>.apk</code>) फ़ाइल को बनाने के लिए इन चरणों का पालन करें।</p>
+
+<hr/>
+
+<h2>🛠️ चरण 1: आवश्यक चीजें इंस्टॉल करें</h2>
+<p>ऐप बनाने के लिए, सुनिश्चित करें कि आपके कंप्यूटर पर निम्न चीज़ें इंस्टॉल हैं:</p>
+<ul>
+    <li><strong>Android Studio</strong>: आधिकारिक वेबसाइट <a href="https://developer.android.com/studio">developer.android.com/studio</a> से डाउनलोड और इंस्टॉल करें।</li>
+    <li><strong>Node.js</strong>: (यह आपके सिस्टम पर पहले से ही इंस्टॉल है)।</li>
+</ul>
+
+<hr/>
+
+<h2>💻 चरण 2: वेब एसेट्स को बिल्ड और सिंक करें</h2>
+<p>मोबाइल एप्लिकेशन पैकेज बनाने से पहले, आपको नवीनतम फ़्रंटएंड सोर्स कोड कंपाइल करना होगा:</p>
+
+<ol>
+    <li>टर्मिनल खोलें और <strong><code>frontend</code></strong> डायरेक्टरी में जाएं:
+        <pre>cd frontend</pre>
+    </li>
+    <li>रिएक्ट एप्लीकेशन एसेट्स के प्रोडक्शन बिल्ड को कंपाइल करें:
+        <pre>node node_modules/vite/bin/vite.js build</pre>
+        <p><em>(यह आपके कंपाइल किए गए वेबसाइट कोड को <code>dist/</code> फ़ोल्डर में बना देगा)</em></p>
+    </li>
+    <li>इन कंपाइल किए गए एसेट्स को नेटिव एंड्रॉइड प्रोजेक्ट में सिंक करें:
+        <pre>npx cap sync</pre>
+        <p><em>(यह <code>dist/</code> की फाइलों को एंड्रॉइड ऐप एसेट्स फोल्डर में कॉपी कर देगा)</em></p>
+    </li>
+</ol>
+
+<hr/>
+
+<h2>🤖 चरण 3: एंड्रॉइड स्टूडियो में APK कंपाइल करें</h2>
+<ol>
+    <li>अपने टर्मिनल से एंड्रॉइड प्रोजेक्ट को एंड्रॉइड स्टूडियो में खोलें:
+        <pre>npx cap open android</pre>
+        <p><em>(वैकल्पिक रूप से, आप एंड्रॉइड स्टूडियो को मैन्युअल रूप से खोलकर "Open Project" चुन सकते हैं और <code>women-safety/frontend/android</code> फ़ोल्डर चुन सकते हैं)</em></p>
+    </li>
+    <li><strong>ग्रैडल सिंक (Gradle Sync) का इंतजार करें</strong>: जब एंड्रॉइड स्टूडियो खुले, तो बैकग्राउंड ग्रैडल बिल्ड टास्क पूरा होने का इंतजार करें (आप नीचे दाईं ओर प्रोग्रेस बार देखेंगे)।</li>
+    <li><strong>APK फ़ाइल बनाएं</strong>:
+        <ul>
+            <li>एंड्रॉइड स्टूडियो के शीर्ष मेनू बार में, क्लिक करें: <strong>Build</strong> -> <strong>Build Bundle(s) / APK(s)</strong> -> <strong>Build APK(s)</strong>।</li>
+            <li>एंड्रॉइड स्टूडियो कोड को कंपाइल करना शुरू कर देगा।</li>
+        </ul>
+    </li>
+    <li><strong>कंपाइल की गई APK फ़ाइल का पता लगाएं</strong>:
+        <ul>
+            <li>कंपाइलेशन पूरा होने पर, नीचे-दाईं ओर एक नोटिफिकेशन दिखाई देगा: <code>APK(s) generated successfully for 1 module</code>।</li>
+            <li>उस पॉपअप में नीले <strong>locate</strong> लिंक पर क्लिक करें।</li>
+            <li>यह उस फोल्डर को खोल देगा जिसमें आपकी फाइल है: <strong><code>app-debug.apk</code></strong>।</li>
+        </ul>
+    </li>
+</ol>
+
+<hr/>
+
+<h2>📱 चरण 4: अपने मोबाइल फोन पर इंस्टॉल करें</h2>
+<ol>
+    <li>कंपाइल की गई <strong><code>app-debug.apk</code></strong> फ़ाइल को अपने एंड्रॉइड फोन पर ट्रांसफर करें (यूएसबी केबल, ब्लूटूथ, ईमेल या गूगल ड्राइव के माध्यम से)।</li>
+    <li>फोन पर फ़ाइल पर टैप करके इंस्टॉल करें।</li>
+    <li>यदि पूछा जाए, तो अपने फोन की सुरक्षा सेटिंग्स में "Install from Unknown Sources" को सक्षम (enable) करें।</li>
+    <li>अपने मोबाइल होम स्क्रीन से सीधे <strong>SafeHer</strong> ऐप लॉन्च करें!</li>
+</ol>
+
+</body>
+</html>
