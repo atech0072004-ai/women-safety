@@ -1,0 +1,93 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<title>SafeHer - Mobile App Build Guide</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+body { font-family: 'Segoe UI', 'Calibri', 'Arial', sans-serif; line-height: 1.6; color: #333333; margin: 30px; }
+h1 { color: #1E3A8A; border-bottom: 2px solid #1E3A8A; padding-bottom: 5px; font-size: 24pt; margin-bottom: 20px; }
+h2 { color: #2563EB; margin-top: 30px; border-bottom: 1px solid #E5E7EB; padding-bottom: 3px; font-size: 16pt; }
+h3 { color: #1D4ED8; font-size: 12pt; margin-top: 15px; margin-bottom: 5px; }
+p, li { font-size: 11pt; margin-bottom: 8px; }
+code { font-family: 'Consolas', 'Courier New', monospace; background-color: #F3F4F6; padding: 2px 4px; font-size: 9.5pt; }
+pre { font-family: 'Consolas', 'Courier New', monospace; background-color: #F3F4F6; border-left: 4px solid #3B82F6; padding: 10px; font-size: 9pt; margin: 15px 0; }
+ul, ol { margin-left: 20px; margin-bottom: 15px; }
+.info-box { background-color: #EFF6FF; border-left: 4px solid #2563EB; padding: 12px; margin: 15px 0; }
+</style>
+</head>
+<body>
+
+<h1>SafeHer - Mobile App Build Guide (Android APK)</h1>
+<p>The SafeHer frontend has <strong>Capacitor</strong> already integrated, which wraps the React web application into a native Android shell. Follow these steps to build your Android mobile application (<code>.apk</code>) file.</p>
+
+<hr/>
+
+<h2>🛠️ Step 1: Install Prerequisites</h2>
+<p>To build the app, ensure you have the following installed on your computer:</p>
+<ul>
+    <li><strong>Android Studio</strong>: Download and install from <a href="https://developer.android.com/studio">developer.android.com/studio</a>.</li>
+    <li><strong>Node.js</strong>: (Already installed on your system).</li>
+</ul>
+
+<hr/>
+
+<h2>💻 Step 2: Build and Sync Web Assets</h2>
+<p>Before building the mobile application package, you must compile the latest frontend source code:</p>
+
+<ol>
+    <li>Open your terminal and navigate to the <strong><code>frontend</code></strong> directory:
+        <pre>cd frontend</pre>
+    </li>
+    <li>Compile the production build of the React application assets:
+        <pre>node node_modules/vite/bin/vite.js build</pre>
+        <p><em>(This creates your compiled website code in the <code>dist/</code> folder)</em></p>
+    </li>
+    <li>Sync these compiled assets to the native Android project:
+        <pre>npx cap sync</pre>
+        <p><em>(This copies the files from <code>dist/</code> to the Android app assets folder)</em></p>
+    </li>
+</ol>
+
+<hr/>
+
+<h2>🤖 Step 3: Compile the APK in Android Studio</h2>
+<ol>
+    <li>Open the Android project in Android Studio automatically from your terminal:
+        <pre>npx cap open android</pre>
+        <p><em>(Alternatively, you can open Android Studio manually, click "Open Project", and select the <code>women-safety/frontend/android</code> folder)</em></p>
+    </li>
+    <li><strong>Wait for Gradle Sync</strong>: When Android Studio opens, wait for the background Gradle build task to finish sync (you will see progress bars at the bottom right).</li>
+    <li><strong>Build the APK File</strong>:
+        <ul>
+            <li>In the top menu bar of Android Studio, click: <strong>Build</strong> -> <strong>Build Bundle(s) / APK(s)</strong> -> <strong>Build APK(s)</strong>.</li>
+            <li>Android Studio will compile the code.</li>
+        </ul>
+    </li>
+    <li><strong>Locate the Completed APK File</strong>:
+        <ul>
+            <li>Once compilation completes, a popup notification will appear in the bottom-right corner stating: <code>APK(s) generated successfully for 1 module</code>.</li>
+            <li>Click the blue <strong>locate</strong> link inside that popup.</li>
+            <li>This opens the output folder containing your installable file: <strong><code>app-debug.apk</code></strong>.</li>
+        </ul>
+    </li>
+</ol>
+
+<hr/>
+
+<h2>📱 Step 4: Install on Your Mobile Device</h2>
+<ol>
+    <li>Transfer the compiled <strong><code>app-debug.apk</code></strong> file to your Android phone (via USB cable, Bluetooth, email, or Google Drive).</li>
+    <li>Tap the file on your phone to install it.</li>
+    <li>If prompted, enable "Install from Unknown Sources" in your phone's security settings.</li>
+    <li>Launch the <strong>SafeHer</strong> app directly from your mobile home screen!</li>
+</ol>
+
+</body>
+</html>
